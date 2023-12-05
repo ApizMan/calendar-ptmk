@@ -273,6 +273,7 @@ class TableCalendar<T> extends StatefulWidget {
         super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TableCalendarState<T> createState() => _TableCalendarState<T>();
 }
 
@@ -515,8 +516,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
               Widget? cell = widget.calendarBuilders.weekNumberBuilder
                   ?.call(context, weekNumber);
 
-              if (cell == null) {
-                cell = Padding(
+              cell ??= Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: Center(
                     child: Text(
@@ -525,7 +525,6 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
                     ),
                   ),
                 );
-              }
 
               return cell;
             },
@@ -686,10 +685,10 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
 
         return Stack(
           alignment: widget.calendarStyle.markersAlignment,
-          children: children,
           clipBehavior: widget.calendarStyle.canMarkersOverflow
               ? Clip.none
               : Clip.hardEdge,
+          children: children,
         );
       },
     );

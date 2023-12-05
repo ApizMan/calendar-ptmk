@@ -31,6 +31,7 @@ class CalendarCore extends StatelessWidget {
   final StartingDayOfWeek startingDayOfWeek;
   final PageController? pageController;
   final ScrollPhysics? scrollPhysics;
+  // ignore: library_private_types_in_public_api
   final _OnCalendarPageChanged onPageChanged;
 
   const CalendarCore({

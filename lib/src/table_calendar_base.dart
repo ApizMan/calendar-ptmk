@@ -80,6 +80,7 @@ class TableCalendarBase extends StatefulWidget {
         super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TableCalendarBaseState createState() => _TableCalendarBaseState();
 }
 
@@ -209,8 +210,8 @@ class _TableCalendarBaseState extends State<TableCalendarBase> {
               constraints: constraints,
               pageController: _pageController,
               scrollPhysics: _canScrollHorizontally
-                  ? PageScrollPhysics()
-                  : NeverScrollableScrollPhysics(),
+                  ? const PageScrollPhysics()
+                  : const NeverScrollableScrollPhysics(),
               firstDay: widget.firstDay,
               lastDay: widget.lastDay,
               startingDayOfWeek: widget.startingDayOfWeek,

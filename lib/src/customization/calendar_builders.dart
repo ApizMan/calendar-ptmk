@@ -70,7 +70,7 @@ class CalendarBuilders<T> {
 
   /// Custom builder for event markers. Use to provide your own marker UI for each day cell.
   /// Using `markerBuilder` will override `singleMarkerBuilder` and default event markers.
-  final MarkerBuilder<T>? markerBuilder;
+  final MarkerBuilder? markerBuilder;
 
   /// Custom builder for days of the week labels (Mon, Tue, Wed, etc.).
   final DayBuilder? dowBuilder;
