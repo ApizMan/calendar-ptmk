@@ -103,15 +103,17 @@ class _TableEventsExampleState extends State<TableEventsExample> {
     final formattedSelectedDay = DateFormat('yyyy-MM-dd').format(dateTime);
 
     return mySelectedEvents.entries
-        .where((entry) {
-          final startDate = DateTime.parse(entry.key);
-          final endDate = DateTime.parse(entry.value.last.enddate!);
-          return formattedSelectedDay == entry.key ||
-              (startDate.isAtSameMomentAs(dateTime) ||
-                  endDate.isAtSameMomentAs(dateTime) ||
-                  (startDate.isBefore(dateTime) && endDate.isAfter(dateTime)));
-        })
-        .expand((entry) => entry.value)
+        .where((entry) => entry.value.any((event) =>
+            (event.startdate == formattedSelectedDay &&
+                event.enddate == formattedSelectedDay) ||
+            (event.startdate!.compareTo(formattedSelectedDay) <= 0 &&
+                event.enddate!.compareTo(formattedSelectedDay) >= 0)))
+        .map((entry) => entry.value.where((event) =>
+            (event.startdate == formattedSelectedDay &&
+                event.enddate == formattedSelectedDay) ||
+            (event.startdate!.compareTo(formattedSelectedDay) <= 0 &&
+                event.enddate!.compareTo(formattedSelectedDay) >= 0)))
+        .expand((events) => events)
         .toList();
   }
 
