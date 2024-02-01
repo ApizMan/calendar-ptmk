@@ -1,3 +1,4 @@
+import 'package:calendar_ptmk/pages/event_expanded_interface.dart/event_expanded.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'pages/events_example.dart';
@@ -32,18 +33,33 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PTMK Calendar'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('Events'),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const TableEventsExample()),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              child: const Text('Calendar'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const TableEventsExample()),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              child: const Text('Expanded'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const EventExpanded()),
+              ),
+            ),
+          ],
         ),
       ),
     );
